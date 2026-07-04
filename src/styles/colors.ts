@@ -11,4 +11,5 @@ export const colors = {
   danger: '#b91c1c',
   dangerLight: '#fee2e2',
   shadow: '#000',
+  headerBackground: '#002951',
 };

@@ -9,17 +9,23 @@ import ProductDetailScreen from '../screens/ProductDetailScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import { RootStackParamList, RootTabParamList } from '../types/product';
 import { useFavorites } from '../context/FavoritesContext';
+import { colors } from '../styles/colors';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
+const headerScreenOptions = {
+  headerStyle: { backgroundColor: colors.headerBackground },
+  headerTintColor: colors.white,
+};
+
 function ProductsStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={headerScreenOptions}>
       <Stack.Screen
         name="ProductList"
         component={ProductListScreen}
-        options={{ title: 'Products' }}
+        options={{ title: 'Products List' }}
       />
       <Stack.Screen
         name="ProductDetail"
@@ -35,7 +41,7 @@ export default function RootNavigator() {
 
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={{ headerShown: false }}>
+      <Tab.Navigator screenOptions={{ headerShown: false, ...headerScreenOptions }}>
         <Tab.Screen
           name="ProductsTab"
           component={ProductsStack}
